@@ -47,7 +47,22 @@ class SampleStore {
     this.F_readfile = "";
     this.R_readfile = "";
     this.Notes = "";
+    this.editSample = false;
   }
+
+  putSample (Sample) {
+    console.log(Sample);
+    axios
+      .put("PUTURL", Sample)
+      .then((res) => res.data)
+      .then(() => alert("Successfully put Sample"))
+      .catch(err => {
+        errorStore.CopyErrors(err.response.data);
+       // console.log(err.response.data);
+        
+    }) 
+     
+    }
 
   addSample(Sample) {
     console.log(Sample);
@@ -63,13 +78,19 @@ class SampleStore {
      
     }
 
-    findSample(Sample) {
-      console.log(Sample);
+    findSample(Sample, state) {
+      console.log(Sample.sampleNumber);
+      console.log(state);
       axios.get(`http://161.35.203.15/detail/${Sample.sampleNumber}`)
-      .then((res) => res.data)
+      .then((res) => {
+        console.log(res.data);
+        this.editSample = true;
+        state.setState(res.data);
+        })
       .then(() => alert("Sample Found"))
+      .then(() => console.log())
       .catch(err => {
-        console.log(err.response.data);
+        console.log(err.response);
       })
     }
   
@@ -115,6 +136,7 @@ decorate(SampleStore, {
   F_readfile: observable,
   R_readfile: observable,
   Notes: observable,
+  editSample : observable,
 });
 
 export default new SampleStore();

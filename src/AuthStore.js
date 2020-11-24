@@ -12,6 +12,7 @@ class AuthStore
     {
         this.username = null;
         this.loginError = "";
+        this.sampleFound = null;
         
     }
 

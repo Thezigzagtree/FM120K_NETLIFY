@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import SampleStore from "./SampleStore";
 
+
 class SubmissionForm extends Component 
 {
   constructor() {
@@ -35,7 +36,7 @@ class SubmissionForm extends Component
       tide: "",
       RH: 0,
       windDirection: "",
-      barromPressure: 0,
+      baromPressure: 0,
       waveHeight: 0,
       secchiDisk: 0,
       TotalDepth: 0,
@@ -52,6 +53,8 @@ class SubmissionForm extends Component
     this.onTextChange = this.onTextChange.bind(this);
     this.addSample = this.addSample.bind(this);
     this.clearSample = this.clearSample.bind(this);
+    this.findSample = this.findSample.bind(this);
+    
   }
 
   clearSample() {
@@ -61,12 +64,19 @@ class SubmissionForm extends Component
 
   onTextChange(event) {
     this.setState({ [event.target.name]: event.target.value });
-    
+      
   }
   addSample(event) {
     event.preventDefault();
     SampleStore.addSample(this.state);
+
   }
+
+  findSample(event) {
+    event.preventDefault();
+    SampleStore.findSample(this.state);
+  }
+  
 
   render() {
     return (
@@ -303,12 +313,12 @@ class SubmissionForm extends Component
         </div>
 
         <div className="form-group">
-          <label>Barrom Pressure</label>
+          <label>Barom Pressure</label>
           <input
             type="text"
             className="form-control"
-            name="barromPressure"
-            placeholder="Barrom Pressure"
+            name="baromPressure"
+            placeholder="Barom Pressure"
           ></input>
         </div>
 
@@ -421,7 +431,7 @@ class SubmissionForm extends Component
             ></input>
 
             <br></br>
-            <button type="Submit" className="btn btn-primary">
+            <button style = {{position: "fixed", right:5, bottom:100  }} type="Submit" className="btn btn-primary">
               Submit Sample
             </button>
           </div>
@@ -429,9 +439,10 @@ class SubmissionForm extends Component
           
         </div>
       </form>
-      <button onClick={this.clearSample}>
+      <button style = {{position: "fixed", right:5, bottom:50  }} onClick={this.clearSample}>
               Clear Sample
             </button>
+        
       </div>
       
     );

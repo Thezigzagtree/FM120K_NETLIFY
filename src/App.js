@@ -22,16 +22,16 @@ function App()
 
 
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="submit">FM120K</a>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+  <a className="navbar-brand" href="submit">FM120K</a>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item ">
-        <a class="nav-link" href="submit">Submit Sample <span class="sr-only">(current)</span></a>
+  <div className="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul className="navbar-nav mr-auto">
+      <li className="nav-item ">
+        <a className="nav-link" href="submit">Submit Sample <span className="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="update">Update Sample</a>
+      <li className="nav-item">
+        <a className="nav-link" href="update">Update Sample</a>
       </li>
      
       
@@ -51,6 +51,7 @@ function App()
 <header className="App-header">
   
           <p>FM120 UPDATE PAGE</p>
+          
           <UpdateForm></UpdateForm>
         
         </header>
