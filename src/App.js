@@ -1,10 +1,10 @@
 import React from "react";
 import "./App.css";
-import SubmissionForm from "./SubmissionForm";
-import UpdateForm from "./UpdateForm";
-import LoginCred from "./LoginCred";
+import SubmissionForm from "./NetlifyComponents/SubmissionForm";
+import UpdateForm from "./NetlifyComponents/UpdateForm";
+import LoginCred from "./NetlifyComponents/LoginCred";
 import { observer } from "mobx-react";
-import AuthStore from "./AuthStore";
+import AuthStore from "./NetlifyComponents/AuthStore";
 import { Route, Switch } from "react-router";
 
 

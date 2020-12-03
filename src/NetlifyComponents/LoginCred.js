@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "../App.css";
 import AuthStore from "./AuthStore";
 import { observer } from "mobx-react";
 
