@@ -54,10 +54,14 @@ class UpdateForm extends Component
 
     this.onTextChange = this.onTextChange.bind(this);
     this.findSample = this.findSample.bind(this);
+    this.updateSample = this.updateSample.bind(this);
     this.clearSample = this.clearSample.bind(this);
   }
 
-  
+  updateSample(event) {
+    event.preventDefault();
+    SampleStore.putSample(this.state);
+  }
 
   clearSample() {
     window.location.reload(false); 
@@ -104,7 +108,7 @@ class UpdateForm extends Component
       return (
       <div>
       <label style = {{color:'yellow'}}>Editting Sample {this.state["sampleNumber"]}</label>        
-        <form onChange={this.onTextChange} onSubmit={this.addSample}>
+        <form onChange={this.onTextChange} onSubmit={this.updateSample}>
         <div className="form-group">
         </div>
         <div className="form-group">
