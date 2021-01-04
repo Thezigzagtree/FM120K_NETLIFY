@@ -53,7 +53,7 @@ class SampleStore {
   putSample (Sample) {
     console.log(Sample);
     axios
-      .put(`https://161.35.203.15/update/${Sample.sampleNumber}`, Sample)
+      .put(`https://fm120k/update/${Sample.sampleNumber}`, Sample)
       .then((res) => res.data)
       .then(() => alert("Successfully put Sample"))
       .catch(err => {
@@ -67,7 +67,7 @@ class SampleStore {
   addSample(Sample) {
     console.log(Sample);
     axios
-      .post("https://161.35.203.15/create/", Sample)
+      .post("https://fm120k/create/", Sample)
       .then((res) => res.data)
       .then(() => alert("Successfully added Sample"))
       .catch(err => {
@@ -81,7 +81,7 @@ class SampleStore {
     findSample(Sample, state) {
       console.log(Sample.sampleNumber);
       console.log(state);
-      axios.get(`https://161.35.203.15/detail/${Sample.sampleNumber}`)
+      axios.get(`https://fm120k/detail/${Sample.sampleNumber}`)
       .then((res) => {
         console.log(res.data);
         this.editSample = true;
