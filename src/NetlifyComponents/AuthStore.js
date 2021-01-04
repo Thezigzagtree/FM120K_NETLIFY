@@ -54,7 +54,7 @@ class AuthStore
     {
       
         axios
-        .post("https://fm120k/login/", userData)
+        .post("https://fm120k.com/login/", userData)
         .then(tokenObj => {
             const user = jwt_decode(tokenObj.data.token);
             this.setAuthToken (tokenObj.data.token);
