@@ -159,7 +159,7 @@ class SubmissionForm extends Component
           <select multiple className="form-control" name="processed">
             <option>Processed</option>
             <option>Sent for Analysis</option>
-            <option>Analysis Received</option>
+            <option>Analysis received</option>
           </select>
         </div>
 
@@ -168,8 +168,8 @@ class SubmissionForm extends Component
           <select multiple className="form-control" name="storage">
             <option>Room Temperature</option>
             <option>4 Degrees Celsius</option>
-            <option>Minus 20 Celsius</option>
-            <option>Minus 80 Celsius</option>
+            <option>-20 Degrees Celsius</option>
+            <option>-80 Degrees Celsius</option>
           </select>
         </div>
 
@@ -198,7 +198,7 @@ class SubmissionForm extends Component
           <select multiple className="form-control" name="extractionKit">
             <option>Qiagen DNeasy Animal and Tissue Kit</option>
             <option>Macherey-Nagel Nucleospin Kit</option>
-            <option>MO BIO Powersoil DNA Isolation Kit</option>
+            <option>MO BIO PowerSoil DNA Isolation Kit</option>
             <option>Other</option>
           </select>
         </div>
