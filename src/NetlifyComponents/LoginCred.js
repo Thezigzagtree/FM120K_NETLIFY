@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import "../App.css";
 import AuthStore from "./AuthStore";
 import { observer } from "mobx-react";
+import SubmissionForm from "./SubmissionForm";
+import {Route, Switch } from "react-router";
+import UpdateForm from "./UpdateForm";
 
 class LoginCred extends Component {
     constructor() {
@@ -12,7 +15,7 @@ class LoginCred extends Component {
       }
 
       this.onTextChange = this.onTextChange.bind(this);
-         this.login = this.login.bind(this);
+      this.login = this.login.bind(this);
 
     };    
     
@@ -25,12 +28,13 @@ class LoginCred extends Component {
         this.setState({ [event.target.name]: event.target.value });
       }
 
-    
     render ()
     {
-        return(
+         
+            return (    
             
-            <form onChange={this.onTextChange} onSubmit={this.login}>            
+            <form onChange={this.onTextChange} onSubmit={this.login} >
+            
                 <div className="form-group">
                 <label>Username</label>
         <input
@@ -40,6 +44,7 @@ class LoginCred extends Component {
             placeholder="username"
           ></input>
         </div>
+        
         <div className="form-group">
           <label>Password</label>
           <input
@@ -57,12 +62,11 @@ class LoginCred extends Component {
             {AuthStore.loginError}
           </div>
           
-        
         </form>
-        
         );
         
     }
-}
+  }
+
 
 export default observer(LoginCred);

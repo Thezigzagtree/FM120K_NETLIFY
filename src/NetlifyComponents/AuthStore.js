@@ -60,7 +60,7 @@ class AuthStore
             this.setAuthToken (tokenObj.data.token);
             this.username = user;
             localStorage.setItem("myToken", tokenObj.data.token);
-            //console.log(tokenObj.username);
+            console.log(tokenObj.username);
             
            
         }
