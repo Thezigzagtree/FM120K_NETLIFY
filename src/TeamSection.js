@@ -14,6 +14,8 @@ class TeamSection extends Component {
         return (
           
           <div className="flex-row" >
+
+          
             <div style={{ width: '18rem' }}>
                 <img src="" />
                 <div >

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {NavLink} from 'react-router-dom';
 import { observer } from "mobx-react";
 import AuthStore from "./NetlifyComponents/AuthStore";
 import AppStore from "./NetlifyComponents/AppStore";
@@ -8,7 +9,7 @@ class Navbar extends Component {
     constructor() {
         super();
         this.state = {
-            activeButton : ''
+            activeButton : '',
         };
   
         this.handleClick = this.handleActiveButton.bind(this);
@@ -16,9 +17,15 @@ class Navbar extends Component {
       };    
      
         
-      handleActiveButton(id) 
+      handleActiveButton(e, id) 
       {
-         AppStore.setButtonId(id); 
+          e.preventDefault();
+        
+        this.activeButton = id;
+        AppStore.setButtonId(id);
+        console.log("Setting id to " + id)
+       
+         
       }
       
   
@@ -29,6 +36,7 @@ class Navbar extends Component {
         
         return (    
             <div >
+            {console.log(AppStore.getId())}
                 
             <img src="https://www.kisr.edu.kw/static/images/kisr_logo.png" className="float-right"></img>
             <div className="d-flex flex-row" style ={{justifyContent : 'center'}}>
@@ -43,31 +51,65 @@ class Navbar extends Component {
 
 
   
+            
+            
             <div className="d-flex flex-row" style ={{justifyContent : 'center'}}>
+            
+            <div style={{padding:'5px'}}>
+
+            <button className="btn btn-outline-primary">
+
+            <NavLink to='about' style={{color:'black'}} activeClassName="active" activeStyle={{color:'Red', fontWeight:'bold'}}>About</NavLink>
+
+            </button>
+            </div>
+            
+            <div style={{padding:'5px'}}>
+
+            <button className="btn btn-outline-primary">
+
+            <NavLink to='tm' style={{color:'black'}} activeClassName="active" activeStyle={{color:'Red', fontWeight:'bold'}}>Team Members</NavLink>
+
+            </button>
+            </div>
+            
+                        <div style={{padding:'5px'}}>
+
+            <button className="btn btn-outline-primary">
+
+            <NavLink to='view'  style={{color:'black'}} activeClassName="active" activeStyle={{color:'Red', fontWeight:'bold'}}>View Data</NavLink>
+
+            </button>
+            </div>
+
           
-            <a href="about" style={{padding:'5px'}}>
-            <button  type="Submit" className="btn btn-primary"  style={{backgroundColor:'red'} }>About</button>
-            </a>
+            {AuthStore.username? <a></a> :  
             
-            <a href="tm" style={{padding:'5px'}}>
-            <button className="btn btn-primary">Team Members</button>
-            </a>
-            
-            <a href="view" style={{padding:'5px'}}>
-            <button className="btn btn-primary"  >View Data</button>
-            </a>
-            
-          
-            {AuthStore.username? <a></a> :  <a href= "login" style={{padding:'5px'}}>
-            <button type="Submit" className="btn btn-primary">Login</button>
-            </a>}
+                <div style={{padding:'5px'}}>
+
+<button className="btn btn-outline-primary">
+
+<NavLink to='login'  style={{color:'black'}} activeClassName="active" activeStyle={{color:'Red', fontWeight:'bold'}}>Login</NavLink>
+
+</button>
+</div>}
            
-           {AuthStore.username? <a href= "submit" style={{padding:'5px'}}>
-                <button type="Submit" className="btn btn-primary">Submit</button>
-            </a> : <a></a>}
-           {AuthStore.username ? <a href= "Update" style={{padding:'5px'}}>
-            <button type="Submit" className="btn btn-primary">Update</button>
-            </a>: <a></a>}
+           {AuthStore.username?             <div style={{padding:'5px'}}>
+
+<button className="btn btn-outline-primary">
+
+<NavLink to='submit'  style={{color:'black'}} activeClassName="active" activeStyle={{color:'Red', fontWeight:'bold'}}>Submit Data</NavLink>
+
+</button>
+</div> : <a></a>}
+           {AuthStore.username ?             <div style={{padding:'5px'}}>
+
+<button className="btn btn-outline-primary">
+
+<NavLink to='update'  style={{color:'black'}} activeClassName="active" activeStyle={{color:'Red', fontWeight:'bold'}}>Update Data</NavLink>
+
+</button>
+</div>: <a></a>}
             
                 
             

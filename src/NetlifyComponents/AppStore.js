@@ -2,14 +2,18 @@ import { decorate, observable } from "mobx";
 
 class AppStore {
   constructor() {
-    this.selectedButtonId = '';
+    this.id = '';
   }
-
   
+    getId()
+    {
+      return this.id;
+    }
+
     setButtonId(id)
     {
-      this.setState('selectedButtonId', id);
-      console.log(this.state('selectedButtonid'))
+     this.id = id;  
+     console.log("new Id is " + id)    
     }
       
 }
