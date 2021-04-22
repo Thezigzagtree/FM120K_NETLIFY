@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
-import AuthStore from "./NetlifyComponents/AuthStore";
 import map from './Map.jpg';
+
 
 class AboutSection extends Component {
 

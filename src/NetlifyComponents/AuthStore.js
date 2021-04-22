@@ -1,6 +1,7 @@
 import { decorate, observable } from "mobx";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import {withRouter} from "react-router-dom";
 
 const instance = axios.create ({
     baseURL: "",
@@ -13,10 +14,25 @@ class AuthStore
         this.username = null;
         this.loginError = "";
         this.sampleFound = null;
+        this.samplesLoaded = false;
+        this.allSamples = null;
         
     }
 
-   
+    getSamples() {
+        axios.get(`https://www.fm120k.com/sampleList/`)
+        .then((res) => {
+          //console.log(res.data);
+          this.allSamples = res.data;
+          this.samplesLoaded = true;
+
+          
+        })
+        .catch(err => {
+          console.log(err.response);
+        })
+      }
+
 
     setAuthToken(token) {
         axios.defaults.headers.common.Authorization = `jwt ${token}`;
@@ -45,7 +61,7 @@ class AuthStore
     signout = () => {
         delete axios.defaults.headers.common.Authorization;
         localStorage.removeItem("myToken");
-        this.user = null;
+        this.username = null;
     };
     
 
@@ -62,12 +78,12 @@ class AuthStore
             localStorage.setItem("myToken", tokenObj.data.token);
             console.log(tokenObj.username);
             
+            
            
-        }
-        ).catch(err => 
+        })
+        .catch(err => 
             {
-            this.loginError = err.response.data.non_field_errors[0];
-            console.log(err.response.data.non_field_errors[0]);
+                console.log(err);
             
         })
             
@@ -79,9 +95,11 @@ decorate (AuthStore,
     {
     username : observable,
     loginError : observable,
+    samplesLoaded : observable,
     
 });
 
 const authStore = new AuthStore();
 authStore.checkForToken();
+authStore.getSamples();
 export default authStore;

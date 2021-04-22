@@ -13,10 +13,20 @@ class AuthStore
         this.username = null;
         this.loginError = "";
         this.sampleFound = null;
+        this.sampleList = null;
         
     }
 
-   
+    getSamples() {
+        console.log("TRIGGER");
+        axios.get(baseURL+`sampleList`)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err.response);
+        })
+      }
 
     setAuthToken(token) {
         axios.defaults.headers.common.Authorization = `jwt ${token}`;
@@ -59,7 +69,9 @@ class AuthStore
             const user = jwt_decode(tokenObj.data.token);
             this.setAuthToken (tokenObj.data.token);
             this.username = user;
-            localStorage.setItem("myToken", tokenObj.data.token);
+            
+            //localStorage.setItem("myToken", tokenObj.data.token);
+            this.props.router.push('/submit')
             //console.log(tokenObj.username);
             
            

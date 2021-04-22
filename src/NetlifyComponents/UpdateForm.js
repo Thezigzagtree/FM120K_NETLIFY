@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "../App.css";
 import SampleStore from "./SampleStore";
+import AuthStore from "./AuthStore";
 import { observer } from "mobx-react";
+import {withRouter } from "react-router-dom";
 
 class UpdateForm extends Component 
 {
@@ -78,6 +80,17 @@ class UpdateForm extends Component
   }
 
   render() {
+    if (!AuthStore.username)
+    {
+      return(
+        <div>
+      {this.props.history.push("/about")}
+        
+        
+        </div>
+      )
+    }
+
     if(!SampleStore.editSample)
     {    
     return (
@@ -506,4 +519,4 @@ class UpdateForm extends Component
   }
 }
 
-export default observer(UpdateForm);
+export default withRouter(observer(UpdateForm));

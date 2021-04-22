@@ -6,29 +6,8 @@ import AppStore from "./NetlifyComponents/AppStore";
 
 class Navbar extends Component {
 
-    constructor() {
-        super();
-        this.state = {
-            activeButton : '',
-        };
-  
-        this.handleClick = this.handleActiveButton.bind(this);
-  
-      };    
-     
-        
-      handleActiveButton(e, id) 
-      {
-          e.preventDefault();
-        
-        this.activeButton = id;
-        AppStore.setButtonId(id);
-        console.log("Setting id to " + id)
-       
-         
-      }
+
       
-  
     render ()
     {
         
@@ -36,7 +15,6 @@ class Navbar extends Component {
         
         return (    
             <div >
-            {console.log(AppStore.getId())}
                 
             <img src="https://www.kisr.edu.kw/static/images/kisr_logo.png" className="float-right"></img>
             <div className="d-flex flex-row" style ={{justifyContent : 'center'}}>
@@ -110,8 +88,16 @@ class Navbar extends Component {
 
 </button>
 </div>: <a></a>}
-            
-                
+
+{AuthStore.username?             <div style={{padding:'5px'}}>
+
+<button className="btn btn-outline-primary" onClick={AuthStore.signout}>
+
+<NavLink to='About'  style={{color:'black'}} activeClassName="active" activeStyle={{color:'Red', fontWeight:'bold'}}>Sign Out</NavLink>
+
+</button></div>:<a></a>}
+
+                        
             
             
 

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
-import AuthStore from "./NetlifyComponents/AuthStore";
 
 class Footbar extends Component {
 
